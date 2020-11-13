@@ -1,4 +1,5 @@
 import pandas as pd
+import tarfile
 
 class Ranker(object):
 
@@ -7,6 +8,8 @@ class Ranker(object):
 
     def index(self):
         try:
+            with tarfile.open('precom/rank/run.tar.gz') as run_tar:
+                run_tar.extract('run.txt', 'precom/rank')
             self.idx = pd.read_csv('precom/rank/run.txt', sep=' ', names=['num', 'Q0', 'docid', 'rank', 'score', 'runid'])
         except:
             pass
@@ -36,11 +39,15 @@ class Recommender(object):
 
     def index(self):
         try:
-            self.idx_datasets = pd.read_csv('precom/rec/datasets/run.txt', sep=' ', names=['num', 'Q0', 'docid', 'rank', 'score', 'runid'])
+            with tarfile.open('precom/rec/datasets/run.tar.gz') as run_tar:
+                run_tar.extract('run.txt', 'precom/rec/datasets')
+                self.idx_datasets = pd.read_csv('precom/rec/datasets/run.txt', sep=' ', names=['num', 'Q0', 'docid', 'rank', 'score', 'runid'])
         except:
             pass
 
         try:
+            with tarfile.open('precom/rec/publications/run.tar.gz') as run_tar:
+                run_tar.extract('run.txt', 'precom/rec/publications')
             self.idx_publications = pd.read_csv('precom/rec/publications/run.txt', sep=' ', names=['num', 'Q0', 'docid', 'rank', 'score', 'runid'])
         except:
             pass
