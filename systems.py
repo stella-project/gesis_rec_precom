@@ -56,7 +56,7 @@ class Recommender(object):
 
         if self.idx_datasets is not None:
             recommendation = self.idx_datasets[self.idx_datasets['num'] == item_id]
-            itemlist = list(recommendation['docid'][page * rpp:(page + 1) * rpp])
+            itemlist = list(recommendation['docid'][page * rpp:(page + 1) * rpp + 1])
         else:
             itemlist = []
 
