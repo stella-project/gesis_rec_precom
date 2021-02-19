@@ -65,7 +65,7 @@ class Recommender(object):
             'rpp': rpp,
             'item_id': item_id,
             'itemlist': itemlist,
-            'num_found': len(itemlist)
+            'num_found': len(recommendation)
         }
 
     def recommend_publications(self, item_id, page, rpp):
