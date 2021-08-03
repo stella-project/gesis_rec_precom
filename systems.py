@@ -49,8 +49,9 @@ class Recommender(object):
             with tarfile.open('precom/rec/publications/run.tar.gz') as run_tar:
                 run_tar.extract('run.txt', 'precom/rec/publications')
             self.idx_publications = pd.read_csv('precom/rec/publications/run.txt', sep=' ', names=['num', 'Q0', 'docid', 'rank', 'score', 'runid'])
+
         except:
-            pass
+            print("rrror")
 
     def recommend_datasets(self, item_id, page, rpp):
 
